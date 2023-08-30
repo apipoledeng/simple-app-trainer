@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Speciality</th>
+                            <th>
+                                <a href="/trainers/add" class="btn btn-success">New</a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for t in trainers %}
+                        <tr>
+                            <td>
+                                {{t.name}}
+                            </td>
+                            <td>
+                                {{t.age}}
+                            </td>
+                            <td>
+                                {{t.specialty}}
+                            </td>
+                            <td>    </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</body>
+</html>
