@@ -5,16 +5,21 @@ from flask_sqlalchemy import SQLAlchemy
 
 # Configure the database connection
 from dotenv import dotenv_values
+db = SQLAlchemy()
 
-app = Flask(__name__)
-# Load the environment variables from .env file
-env = dotenv_values('.env')
+def create_app():
 
-# Configure the database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = env['SQLALCHEMY_DATABASE_URI']
+    app = Flask(__name__)
+    # Load the environment variables from .env file
+    env = dotenv_values('.env')
 
-# postgres://employee_db_bxwj_user:NmnlPOfwrr2L0dTPGRjDzgpqX05WGTOU@dpg-cjnelrmqdesc739pic00-a.oregon-postgres.render.com/employee_db_bxwj
-db = SQLAlchemy(app)
+    # Configure the database connection
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
+    db.init_app(app)
+
+    return app
+
+    # postgres://employee_db_bxwj_user:NmnlPOfwrr2L0dTPGRjDzgpqX05WGTOU@dpg-cjnelrmqdesc739pic00-a.oregon-postgres.render.com/employee_db_bxwj
 
 # Define a Trainer model
 class Trainer(db.Model):
